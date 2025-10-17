@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E&R NOR PERÚ - Expertos en Energía y Frío Industrial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #2b6cb0;
+            --light-accent: #4299e1;
+            --success: #38a169;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --text: #4a5568;
+            --text-light: #718096;
+            --background: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-color: var(--background);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        p, li {
+            text-align: justify;
+            color: var(--text);
+        }
+        
+        .text-justify {
+            text-align: justify;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 10px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+            color: white;
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            border-color: #128C7E;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Hero Section con Carrusel Integrado */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+        
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-carousel .carousel-item {
+            height: 100vh;
+            min-height: 600px;
+        }
+        
+        .hero-carousel .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-carousel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(26, 54, 93, 0.85), rgba(43, 108, 176, 0.7));
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            color: white;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            line-height: 1.6;
+            color: white;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            border-top: 4px solid var(--accent);
+            background-color: white;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .service-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            transition: all 0.3s;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+            background-color: white;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--light-accent);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content ul {
+            padding-left: 20px;
+        }
+        
+        .service-content li {
+            margin-bottom: 8px;
+            text-align: left;
+        }
+        
+        .carousel-item {
+            height: 500px;
+        }
+        
+        .carousel-img {
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-caption {
+            background: rgba(26, 54, 93, 0.85);
+            padding: 20px;
+            border-radius: 8px;
+            bottom: 30%;
+            left: 10%;
+            right: 10%;
+            color: white;
+        }
+        
+        .carousel-caption h5 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .carousel-caption p {
+            color: white;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .about-section {
+            background-color: var(--light);
+            padding: 100px 0;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .whatsapp-link {
+            color: #25D366;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .whatsapp-link:hover {
+            color: #128C7E;
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--light-accent);
+        }
+        
+        .footer-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #4a5568;
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #a0aec0;
+        }
+        
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            color: white;
+        }
+        
+        /* Mejoras para móviles */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .carousel-item {
+                height: 400px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .value-card, .service-card {
+                margin-bottom: 20px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+            
+            .btn-primary, .btn-outline-primary, .btn-whatsapp {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .carousel-caption {
+                bottom: 20%;
+                padding: 15px;
+            }
+            
+            .carousel-caption h5 {
+                font-size: 1.2rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 0.9rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+            
+            p, li {
+                text-align: left;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .carousel-item {
+                height: 300px;
+            }
+            
+            .carousel-caption {
+                bottom: 10%;
+                padding: 10px;
+            }
+            
+            .carousel-caption h5 {
+                font-size: 1rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Estilos para imágenes de respaldo */
+        .backup-img {
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-weight: 500;
+        }
+        
+        /* Nuevos estilos para mejorar la presentación */
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .text-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .card-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .lead-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* Botones en hero section con fondo blanco */
+        .hero-content .btn-primary {
+            background-color: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        
+        .hero-content .btn-primary:hover {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        .hero-content .btn-outline-primary {
+            color: white;
+            border-color: white;
+        }
+        
+        .hero-content .btn-outline-primary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-snowflake me-2"></i>E&R NOR PERÚ
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+                <a href="#contacto" class="btn btn-primary ms-lg-3">Solicitar Asesoría</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section con Carrusel Integrado -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-carousel">
+            <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <!-- IMÁGENES LOCALES - RUTAS CORREGIDAS -->
+                    <div class="carousel-item active">
+                        <img src="imagenes/imagen1.jpg" class="d-block w-100 carousel-img" alt="Sistemas de refrigeración industrial"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagenes/imagen2.jpg" class="d-block w-100 carousel-img" alt="Climatización comercial"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagenes/imagen3.jpg" class="d-block w-100 carousel-img" alt="Proyectos de ingeniería"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagenes/imagen4.jpg" class="d-block w-100 carousel-img" alt="Mantenimiento preventivo"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagenes/imagen7.jpg" class="d-block w-100 carousel-img" alt="Mantenimiento preventivo"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'">
+                    </div>					
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">Expertos en Energía y Frío Industrial</h1>
+                <p class="hero-subtitle">Soluciones integrales en refrigeración y climatización con enfoque en eficiencia energética y sostenibilidad ambiental para los sectores industrial y comercial.</p>
+                <div class="mt-4">
+                    <a href="#servicios" class="btn btn-primary me-3">Nuestros Servicios</a>
+                    <a href="#contacto" class="btn btn-outline-primary me-3">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="card-title">Seguridad</h3>
+                        <p class="text-justify">Aplicamos rigurosamente las normas técnicas nacionales e internacionales en cada proyecto, asegurando un ambiente de trabajo libre de riesgos.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="card-title">Eficiencia Energética</h3>
+                        <p class="text-justify">Ofrecemos soluciones proactivas y diseños optimizados que buscan la máxima reducción en el consumo eléctrico de nuestros clientes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="card-title">Responsabilidad Ambiental</h3>
+                        <p class="text-justify">Gestionamos responsablemente los residuos y refrigerantes, promoviendo tecnologías amigables con el medio ambiente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Acerca de Nosotros</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="card-title">Misión</h3>
+                    <p class="text-justify">Proveer soluciones electromecánicas integrales y especializadas para los sectores industrial, comercial y residencial. Nos comprometemos a garantizar la continuidad operativa, la máxima seguridad del personal y las instalaciones, y la eficiencia energética de nuestros clientes, actuando siempre con responsabilidad hacia la Protección del Medio Ambiente.</p>
+                    
+                    <h3 class="mt-4 card-title">Visión</h3>
+                    <p class="text-justify">Ser una empresa referente en servicios electromecánicos y de climatización/refrigeración integral en la región norte del Perú, reconocida por la excelencia técnica de nuestro staff, nuestra capacidad de innovación en soluciones de ahorro de energía y nuestro compromiso inquebrantable con la calidad y la sostenibilidad.</p>
+                
+                    <h3 class="card-title">Valores</h3>
+                    <p class="text-justify"><strong class="text-highlight">SEGURIDAD:</strong> La seguridad es nuestra prioridad no negociable. Aplicamos rigurosamente las normas técnicas nacionales e internacionales en cada instalación eléctrica y proyecto de refrigeración, asegurando un ambiente de trabajo libre de riesgos y protegiendo la vida útil de los equipos y activos de nuestros clientes.</p>
+                    <p class="text-justify"><strong class="text-highlight">RESPONSABILIDAD AMBIENTAL:</strong> Nos comprometemos a gestionar de forma responsable los residuos y refrigerantes, cumpliendo con las regulaciones ambientales. Promovemos activamente tecnologías amigables con el medio ambiente para minimizar la huella ecológica de nuestras operaciones y las de nuestros clientes.</p>
+                    <p class="text-justify"><strong class="text-highlight">EXPERIENCIA Y PROFESIONALISMO:</strong> Contamos con un equipo técnico capacitado y en constante actualización en electricidad y refrigeración. Actuamos con transparencia, precisión y puntualidad, garantizando diagnósticos correctos y ejecuciones de alta calidad en cada servicio.</p>
+                </div>
+                <div class="col-lg-6">
+                    <!-- IMAGEN LOCAL - RUTA CORREGIDA -->
+                    <img src="imagenes/imagen1.jpg" alt="Equipo técnico especializado" class="img-fluid rounded shadow"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <!-- IMAGEN LOCAL - RUTA CORREGIDA -->
+                        <div class="service-img" style="background-image: url('imagenes/refrigeracion.jpg')"
+                             onerror="this.style.backgroundImage='url(https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80)'"></div>
+                        <div class="service-content">
+                            <h4 class="card-title">Refrigeración y Congelación</h4>
+                            <p class="text-justify">Servicio técnico especializado para la cadena de frío, incluyendo cámaras frigoríficas, túneles de congelación y equipos específicos (vitrinas, conservadoras, enfriadoras).</p>
+                            <ul>
+                                <li>Refrigeración Comercial e Industrial</li>
+                                <li>Reparación de compresores y condensadoras</li>
+                                <li>Mantenimiento de sistemas de control</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <!-- IMAGEN LOCAL - RUTA CORREGIDA -->
+                        <div class="service-img" style="background-image: url('imagenes/climatizacion.jpg')"
+                             onerror="this.style.backgroundImage='url(https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80)'"></div>
+                        <div class="service-content">
+                            <h4 class="card-title">Sistemas de Climatización</h4>
+                            <p class="text-justify">Instalación, reparación y mantenimiento de sistemas de aire acondicionado y ventilación mecánica para todo tipo de espacios.</p>
+                            <ul>
+                                <li>Aire Acondicionado (Split, Piso-Techo)</li>
+                                <li>Sistemas de alta eficiencia y precisión</li>
+                                <li>Ventilación mecánica y extracción</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <!-- IMAGEN LOCAL - RUTA CORREGIDA -->
+                        <div class="service-img" style="background-image: url('imagenes/ingenieria.jpg')"
+                             onerror="this.style.backgroundImage='url(https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80)'"></div>
+                        <div class="service-content">
+                            <h4 class="card-title">Proyectos de Ingeniería</h4>
+                            <p class="text-justify">Diseño, dimensionamiento y ejecución de proyectos térmicos y frigoríficos, enfocados en maximizar la seguridad y el ahorro de energía.</p>
+                            <ul>
+                                <li>Asesoramiento de Proyectos (Consultoría)</li>
+                                <li>Implementación de Sistemas</li>
+                                <li>Diseño de cámaras frigoríficas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Carousel -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title">Nuestros Proyectos</h2>
+            <div id="projectsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner rounded">
+                    <div class="carousel-item active">
+                        <!-- IMAGEN LOCAL - RUTA CORREGIDA -->
+                        <img src="imagenes/imagen2.jpg" class="d-block w-100 carousel-img" alt="Proyecto de refrigeración industrial"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
+                        <div class="carousel-caption">
+                            <h5>Refrigeración Industrial</h5>
+                            <p>Instalación de sistema de refrigeración para industria alimentaria</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <!-- IMAGEN LOCAL - RUTA CORREGIDA -->
+                        <img src="imagenes/imagen4.jpg" class="d-block w-100 carousel-img" alt="Sistema de climatización"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
+                        <div class="carousel-caption">
+                            <h5>Climatización Comercial</h5>
+                            <p>Implementación de sistema de aire acondicionado para centro comercial</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <!-- IMAGEN LOCAL - RUTA CORREGIDA -->
+                        <img src="imagenes/imagen7.jpg" class="d-block w-100 carousel-img" alt="Cámara frigorífica"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
+                        <div class="carousel-caption">
+                            <h5>Cámaras Frigoríficas</h5>
+                            <p>Diseño y montaje de cámaras frigoríficas para cadena de supermercados</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="contact-info">
+                        <h4 class="card-title">Información de Contacto</h4>
+                        <p><i class="fas fa-map-marker-alt contact-icon"></i> AV. IMPERIO N° 975 - DISTRITO LA VICTORIA - CHICLAYO</p>
+                        <p>
+                            <i class="fas fa-phone contact-icon"></i> 
+                            <a href="tel:+51904699193" class="whatsapp-link">904699193</a>
+                        </p>
+                        <p><i class="fas fa-envelope contact-icon"></i> ernperu1@gmail.com</p>
+                        <p><i class="fas fa-envelope contact-icon"></i> informes@eyrnorperu.com</p>
+                        <p><i class="fas fa-globe contact-icon"></i> www.eyrnorperu.com</p>
+                    </div>
+                    <div class="mt-4">
+                        <h5 class="card-title">Horario de Atención</h5>
+                        <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                        <p>Sábados: 8:00 AM - 1:00 PM</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://wa.me/51904699193?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20de%20refrigeración%20y%20climatización" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre Completo" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Correo Electrónico" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Teléfono">
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" required>
+                                <option value="" selected disabled>Seleccione un servicio</option>
+                                <option value="refrigeracion">Refrigeración y Congelación</option>
+                                <option value="climatizacion">Sistemas de Climatización</option>
+                                <option value="proyectos">Proyectos de Ingeniería</option>
+                                <option value="mantenimiento">Contratos de Mantenimiento</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-title">E&R NOR PERÚ</h5>
+                    <p>Expertos en energía y frío industrial. Soluciones integrales en refrigeración y climatización con enfoque en eficiencia energética y sostenibilidad ambiental.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-title">Enlaces</h5>
+                    <div class="footer-links">
+                        <a href="#inicio">Inicio</a>
+                        <a href="#nosotros">Nosotros</a>
+                        <a href="#servicios">Servicios</a>
+                        <a href="#contacto">Contacto</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="footer-title">Servicios</h5>
+                    <div class="footer-links">
+                        <a href="#servicios">Refrigeración y Congelación</a>
+                        <a href="#servicios">Sistemas de Climatización</a>
+                        <a href="#servicios">Proyectos de Ingeniería</a>
+                        <a href="#servicios">Contratos de Mantenimiento</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Contacto</h5>
+                    <div class="footer-links">
+                        <p><i class="fas fa-map-marker-alt me-2"></i> AV. IMPERIO N° 975 - LA VICTORIA - CHICLAYO</p>
+                        <p><i class="fas fa-phone me-2"></i> 904699193</p>
+                        <p><i class="fas fa-envelope me-2"></i> ernperu1@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 E&R NOR PERÚ. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/51904699193?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20de%20refrigeración%20y%20climatización" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Efecto de navbar al hacer scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+        
+        // Inicializar tooltips de Bootstrap
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
+</body>
+</html>
